@@ -2,7 +2,8 @@
  * @param {number} n
  * @return {number}
  */
-//FIRST ITERATIVE, 2ND RECURSIVE
+
+//FIRST ITERATIVE SECOND RECURSIVE
 
  var climbStairs = function(n) {
     // if(n==1){
@@ -18,12 +19,9 @@
     // }
     // return c;
     var recursiveClimb = function(n,cache){
-        if(n===0||n===1) return 1;
-        if(n===2) return 2;
         if(cache[n]) return cache[n];
-        let result = climbStairs(n-1,cache)+climbStairs(n-2,cache);
-        cache[n] = result;
-        return result;
+        cache[n] = recursiveClimb(n-1,cache)+recursiveClimb(n-2,cache);
+        return cache[n];
     }
-    return recursiveClimb(n,{});
+    return recursiveClimb(n,{1:1,2:2});
 };
