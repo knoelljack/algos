@@ -13,3 +13,22 @@
     }
     return ans
 };
+
+//CYCLIC SORT APPROACH
+var findDisappearedNumbers = function(nums) {
+    let i = 0;
+    let n = nums.length;
+    while(i < n){
+        let j = nums[i]-1;
+        if(nums[i] !== nums[j]){
+            [nums[i],nums[j]] = [nums[j],nums[i]];
+        } else {
+            i++;
+        }
+    }
+    let missing = [];
+    for(let i=0; i<n; i++){
+        if(nums[i] !== i+1) missing.push(i+1);
+    }
+    return missing;
+};
